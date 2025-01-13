@@ -23,18 +23,26 @@ function Home(){
     let lastNode = list.getElementAt(list.length - 1);
     let nextNode = lastNode ? lastNode.next : null;
 
-    console.log(nextNode)
-
-    window.addEventListener("scroll", ()=>{
-        if (window.scrollY + window.innerHeight >= document.scrollingElement.scrollHeight){
+    useEffect(() => {
+        const handleScroll = () => {
+          if (window.scrollY + window.innerHeight >= document.scrollingElement.scrollHeight) {
+            if (nextNode) {
+              let parentElement = document.body.querySelector("#root");
     
-            let parentElement = document.body.querySelector("#root");
-            // console.log(lastNode)
-            parentElement.appendChild(nextNode.element);
-            nextNode = nextNode.next;
-            
-        }
-    })
+              // Append the next node element to the parent
+              parentElement.appendChild(nextNode.element);
+              nextNode = nextNode.next; // Move to the next node in the list
+              console.log("Appended element, moving to next:", nextNode);
+            }
+          }
+        };
+    
+        window.addEventListener("scroll", handleScroll);
+    
+        return () => {
+          window.removeEventListener("scroll", handleScroll); // Cleanup listener on unmount
+        };
+      }, [list]);
 
 
     return (
