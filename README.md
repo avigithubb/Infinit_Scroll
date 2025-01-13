@@ -1,2 +1,2 @@
 # Infinit_Scroll
-An infinitely scrolling webpage.
+An feature that allows us to infinitely scroll on a certain amount of content.
