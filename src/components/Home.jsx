@@ -6,7 +6,7 @@ function Home(){
     
 
     useEffect(() => {
-        if(list.length === 0){
+        
         const rootElement = document.getElementById("root");
         const allElementsInsideRoot = rootElement.querySelectorAll("*");
 
@@ -16,7 +16,7 @@ function Home(){
         });
 
         console.log("Initial list populated:", list.length); // Debugging
-    }
+    
     }, [list]);
     
 
